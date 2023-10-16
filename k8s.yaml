@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: flask-app
 spec:
-  replicas: 3 # Number of replicas (adjust as needed)
+  replicas: 1 # Number of replicas (adjust as needed)
   selector:
     matchLabels:
       app: flask-app
@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
       - name: flask-app
-        image: techsckoolacr.azurecr.io/myflaskapp:v2
-        ports:
-        - containerPort: 5000 # Port on which your Flask app is running
+        image: techsckoolacr.azurecr.io/myflaskapp:v4
+        # ports:
+        # - containerPort: 5000 # Port on which your Flask app is running
       imagePullSecrets: # Add this section
       - name: imagepullsec
 
@@ -29,10 +29,10 @@ metadata:
   name: flask-service
 spec:
   selector:
-    app: flask-app1
+    app: flask-app
   type: LoadBalancer
   ports:
     - protocol: TCP
-      port: 5000 # Port to expose on the service
-      targetPort: 5000 # Port your Flask app is running on
+      port: 80 # Port to expose on the service
+      targetPort: 80 # Port your Flask app is running on
 
