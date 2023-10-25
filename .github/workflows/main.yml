@@ -1,0 +1,40 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+    #   - name: Set up Azure CLI
+    #     uses: azure/login@v1
+    #     with:
+    #       creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+      # Logs in with your Azure credentials
+      - name: AZ Login
+        run: az login --service-principal -u 0f5f80d8-e9b7-40ff-94ea-ec1bdc0b8da2 -p QVK8Q~JNwhus08RkmUeTvShyGPNUxPdoHwAkBctv --tenant ab834a0e-d914-4111-9d90-210d9c0c5212
+
+
+      - name: Build and push Docker image to ACR
+        run: |
+          az acr build --registry chatgptfordevops007 --image flaskapp:{{ github.sha }} AppCode/Dockerfile
+        #env:
+        #  AZURE_CR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
+
+      - name: Configure Kubernetes context
+        run: |
+          az aks get-credentials --resource-group myResourceGroup --name myakscluster
+
+      - name: Deploy to Kubernetes
+        env:
+          KUBECONFIG: $HOME/.kube/config
+        run: |
+          kubectl apply -f AppCode/k8s.yaml

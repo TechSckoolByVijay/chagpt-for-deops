@@ -1,0 +1,37 @@
+# Python-specific
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Python environment
+venv/
+.env
+
+# Terraform-specific
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+terraform.tfplan
+
+# Docker-specific
+.dockerignore
+Dockerfile
+docker-compose.yml
+
+# Kubernetes-specific
+.kube/
+*.kubeconfig
+
+# Ignore any local logs or temporary files
+*.log
+*.log.*
+log/
+tmp/
+temp/
+*.swp
+
+# IDE or editor-specific files
+.idea/
+.vscode/
+*.sublime-*
