@@ -15,9 +15,9 @@ terraform.tfstate.backup
 terraform.tfplan
 
 # Docker-specific
-.dockerignore
-Dockerfile
-docker-compose.yml
+# .dockerignore
+# Dockerfile
+# docker-compose.yml
 
 # Kubernetes-specific
 .kube/
