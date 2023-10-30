@@ -26,7 +26,7 @@ jobs:
       - name: Build and push Docker image to ACR
         run: |
           cd AppCode
-          az acr build --registry chatgptfordevops007 --image flaskapp:{{ github.sha }} .
+          az acr build --registry chatgptfordevops007 --image flaskapp:latest .
         #env:
         #  AZURE_CR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
 
