@@ -34,11 +34,11 @@ jobs:
       - name: Configure Kubernetes context
         run: |
           az aks get-credentials --resource-group myResourceGroup --name myakscluster
-
-      - name: Deploy to Kubernetes
-        env:
-          KUBECONFIG: $HOME/.kube/config
-        run: |
           kubectl apply -f AppCode/k8s.yaml
 
-          
+      # - name: Deploy to Kubernetes
+      #   env:
+      #     KUBECONFIG: $HOME/.kube/config
+      #   run: |
+      #     kubectl apply -f AppCode/k8s.yaml
+
