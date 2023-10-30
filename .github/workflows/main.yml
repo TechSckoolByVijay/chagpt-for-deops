@@ -36,9 +36,9 @@ jobs:
           az aks get-credentials --resource-group myResourceGroup --name myakscluster
           kubectl apply -f AppCode/k8s.yaml
 
-      # - name: Deploy to Kubernetes
+      - name: Deploy to Kubernetes
       #   env:
       #     KUBECONFIG: $HOME/.kube/config
-      #   run: |
-      #     kubectl apply -f AppCode/k8s.yaml
+        run: |
+          kubectl apply -f AppCode/k8s.yaml
 
