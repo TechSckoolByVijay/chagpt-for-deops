@@ -40,3 +40,5 @@ jobs:
           KUBECONFIG: $HOME/.kube/config
         run: |
           kubectl apply -f AppCode/k8s.yaml
+
+          
