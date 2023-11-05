@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: flask-app-container
-        image: chatgptfordevops007.azurecr.io/flask:vijay
+        image: chatgptfordevops007.azurecr.io/flask:latest
         ports:
         - containerPort: 80
       #imagePullSecrets:

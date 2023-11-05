@@ -14,6 +14,11 @@ def index():
 def products():
     return "Check out our latest products."
 
+
+@app.route('/about')
+def about():
+    return "Stay Awesome....!"
+
 # New route for calculation, This is just for fun  : http://127.0.0.1/calculate/10/20
 @app.route('/calculate/<int:num1>/<int:num2>')
 def calculate(num1, num2):
