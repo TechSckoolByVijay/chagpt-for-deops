@@ -13,10 +13,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: AZ Login
-      run: |
-        az login
-
+    - name: Set up Azure CLI
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        
     # - name: Set up Azure Kubernetes Service (AKS) 
     #   run: az aks get-credentials --resource-group <your-aks-rg> --name <your-aks-name>
 
