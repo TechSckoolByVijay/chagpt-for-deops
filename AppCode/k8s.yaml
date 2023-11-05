@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: flask-app-deployment
 spec:
-  replicas: 5
+  replicas: 1
   selector:
     matchLabels:
       app: flask-app
@@ -14,11 +14,11 @@ spec:
     spec:
       containers:
       - name: flask-app-container
-        image: chatgptfordevops007.azurecr.io/myflaskapp:latest
+        image: chatgptfordevops007.azurecr.io/flask:vijay
         ports:
         - containerPort: 80
-      imagePullSecrets:
-      - name: imagepullsec  # Name of the image pull secret
+      #imagePullSecrets:
+      #- name: imagepullsec  # Name of the image pull secret
 
 
 ---
