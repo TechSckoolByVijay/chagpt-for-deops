@@ -17,8 +17,8 @@ spec:
         image: chatgptfordevops007.azurecr.io/flask:latest
         ports:
         - containerPort: 80
-      #imagePullSecrets:
-      #- name: imagepullsec  # Name of the image pull secret
+      imagePullSecrets:
+      - name: imagepullsec  # Name of the image pull secret
 
 
 ---
