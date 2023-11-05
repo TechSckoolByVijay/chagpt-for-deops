@@ -1,0 +1,32 @@
+name: CI/CD Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: AZ Login
+      run: |
+        az login
+
+    # - name: Set up Azure Kubernetes Service (AKS)
+    #   run: az aks get-credentials --resource-group <your-aks-rg> --name <your-aks-name>
+
+    - name: Build and push Docker image using az acr build
+      run: |
+        cd AppCode  # Change to the /AppCode directory
+        az acr build --registry chatgptfordevops007  --image flaskapp:latest .
+        cd ..  # Return to the root directory
+
+    - name: Deploy to AKS
+      run:  |
+        az aks get-credentials --resource-group myResourceGroup --name myakscluster
+        kubectl apply -f AppCode/k8s/k8s.yaml  # Modify this based on your project
