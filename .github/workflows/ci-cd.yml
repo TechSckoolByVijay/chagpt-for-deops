@@ -17,7 +17,7 @@ jobs:
       run: |
         az login
 
-    # - name: Set up Azure Kubernetes Service (AKS)
+    # - name: Set up Azure Kubernetes Service (AKS) 
     #   run: az aks get-credentials --resource-group <your-aks-rg> --name <your-aks-name>
 
     - name: Build and push Docker image using az acr build
